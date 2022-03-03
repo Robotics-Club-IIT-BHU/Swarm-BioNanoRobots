@@ -1,4 +1,4 @@
-rom turtle import width
+from turtle import width
 import pygame
 import numpy as np
 import gym
