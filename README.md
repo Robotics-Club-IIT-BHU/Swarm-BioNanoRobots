@@ -32,8 +32,11 @@ This environment is not only limited to the research of cancer treatment. Due to
 **References** :
 
 [1] Simple Spread: MPE in which the agents must learn to cover all the landmarks while avoiding collisions.
+
 [2] OpenAI Gym
+
 [3] Multi-agent system simulation of nano-robotic drug delivery in tumors of body tissues
+
 [4] Assessment of Applying Path Planning Technique to Nanorobots in a Human Blood Environment
 
 
