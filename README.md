@@ -35,8 +35,10 @@ The Gym environment is rendered using PyGame.
 
 This environment is not only limited to the research of cancer treatment. Due to its flexibility, it can be used for testing multi-agent path-planning algorithms where the RBCs can be treated as dynamic obstacles and the tumors as dynamic landmarks. These can be very easily changed to suit the problem at hand.
 
-![conc](./rsc/conclusion1.png)
-![conc](./rsc/conclusion2.png)
+<p align="center">
+ <img src="./rsc/conclusion1.png">
+ <img src="./rsc/conclusion2.png">
+</p>
 
 ## References
 
