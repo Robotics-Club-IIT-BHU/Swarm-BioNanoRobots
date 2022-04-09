@@ -7,7 +7,7 @@ import math
 
 
 FPS = 60
-WIDTH, HEIGHT = 1200, 800
+WIDTH, HEIGHT = 1400, 750
 MAX_RP, MAX_ACC = 1, 1
 
 # colors
@@ -15,13 +15,14 @@ BLOOD = (247, 209, 209)
 RED = (250, 10, 100)
 GREY = (128, 128, 128)
 
-RADIUS = 100
-STEM = [[WIDTH - 30, 30], [WIDTH-30, HEIGHT-30]]
-e = 0.5
 NUM_BOTS = 50
-NUM_TUMOR = 20
-NUM_RBC = 200
+NUM_TUMOR = 25
+NUM_RBC = 175
 NUM_STEM = 2
+TUMOR_RADIUS = 100
+STEM = [[WIDTH - 30, 30], [WIDTH-30, HEIGHT-30]] #stem position
+e = 0.5 #coeff of restitution
+
 
 # images
 Bot_img = pygame.image.load('bott.png')
@@ -40,7 +41,7 @@ class Bot():
         self.ang_acc = 0
         self.angle = 0
         self.observ = []
-        self.r = 12
+        self.r = 8
 
     def update(self, action):
 
@@ -113,7 +114,7 @@ class Bot():
 class RBC():
     def __init__(self):
         # self.id=id
-        self.pos = [random.uniform(-WIDTH, WIDTH),
+        self.pos = [random.uniform(-WIDTH/2, WIDTH),
                     random.uniform(-HEIGHT, HEIGHT)]
         self.vel = [random.uniform(0.5, 2),
                     random.uniform(0.5, 2)]
@@ -126,7 +127,7 @@ class RBC():
         if self.pos[1] < 0 or self.pos[0] > WIDTH:
             self.vel = [random.uniform(1, 2),
                         random.uniform(1, 2)]
-            self.pos = [random.uniform(-WIDTH, 0),
+            self.pos = [random.uniform(-WIDTH/2, 3*WIDTH/4),
                         random.uniform(HEIGHT, 2*HEIGHT)]
         if self.vel[0] < 1:
             self.vel[0] += 0.1
@@ -147,17 +148,17 @@ class tumor():
     def update(self):
         self.pos[0] += self.vel[0]
         self.pos[1] += self.vel[1]
-        self.vel[1] *= 1.01
-        self.vel[0] *= 1.01
+        self.vel[1] *= 1.03
+        self.vel[0] *= 1.03
 
         # stem movement
         self.stem[0] += self.stem_vel[0]
         self.stem[1] += self.stem_vel[1]
-        if self.stem[0] > WIDTH or self.stem[0] < WIDTH - 30:
+        if self.stem[0] > WIDTH -5 or self.stem[0] < WIDTH - 30:
             self.stem_vel[0] *= -1
-        if self.stem[1] < 0 or self.stem[1] > HEIGHT:
+        if self.stem[1] < 0 or self.stem[1] > HEIGHT-5:
             self.stem_vel[1] *= -1
-        #self.r += ((math.sqrt(math.pow((STEM[0] -self.pos[0]), 2)+math.pow((STEM[1] - self.pos[1]), 2)))) / (RADIUS)
+        #self.r += ((math.sqrt(math.pow((STEM[0] -self.pos[0]), 2)+math.pow((STEM[1] - self.pos[1]), 2)))) / (TUMOR_RADIUS)
         # if self.r > 7:
         #self.r = 7
 
@@ -215,7 +216,7 @@ class CustomEnv(gym.Env):
                     continue
                 else:
                     if is_collision(self, a, b):
-                        self.reward -= 1
+                        self.reward -= 2
                         collide(a, b, e)
         # between rbcs
         for a in self.rbc:
@@ -224,17 +225,18 @@ class CustomEnv(gym.Env):
                     continue
                 else:
                     if is_collision(self, a, b):
-                        self.reward -= 10
                         collide(a, b, e)
             # between bots and tumor
         for a in self.agents:
             for b in self.tumor:
                 if is_collision(self, a, b):
+                    self.reward +=3
                     collide(a, b, e)
             # between bots and rbc
         for a in self.agents:
             for b in self.rbc:
                 if is_collision(self, a, b):
+                    self.reward -=1
                     collide(a, b, e)
             # between rbc and tumor
         for a in self.rbc:
@@ -296,7 +298,7 @@ class CustomEnv(gym.Env):
         for t in self.tumor:
             t.update()
             id = t.id
-            if(math.sqrt(math.pow((t.stem[0] - t.pos[0]), 2)+math.pow((t.stem[1] - t.pos[1]), 2)) > RADIUS):
+            if(math.sqrt(math.pow((t.stem[0] - t.pos[0]), 2)+math.pow((t.stem[1] - t.pos[1]), 2)) > TUMOR_RADIUS):
                 self.tumor.remove(t)
                 self.tumor.append(tumor(id))
 
@@ -324,7 +326,7 @@ class CustomEnv(gym.Env):
             self.window.blit(rbc_image, rbc.pos)
         pygame.display.update()
 
-
+#COLLISION
 def is_collision(self, agent1, agent2):
     dx, dy = agent1.pos[0] - agent2.pos[0], agent1.pos[1] - agent2.pos[1]
     d = math.sqrt(dx**2 + dy**2)
@@ -362,11 +364,11 @@ env.init_render()
 while not env.done:
     env.clock.tick(FPS)
     get_event = pygame.event.get()
-    for event in get_event:
-        if event.type == pygame.QUIT:
-            env.done = True
     action = np.random.randint(4, size=env.num_bots)
     env.step(action)
     # render current state
     env.render()
+    for event in get_event:
+        if event.type == pygame.QUIT:
+            env.done = True
 pygame.quit()
