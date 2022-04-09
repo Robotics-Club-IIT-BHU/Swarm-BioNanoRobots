@@ -25,13 +25,13 @@ e = 0.5 #coeff of restitution
 
 
 # images
-Bot_img = pygame.image.load('bott.png')
+Bot_img = pygame.image.load('Media/Nano-bot-image.png')
 Bot_img_copy = pygame.transform.rotate(Bot_img, 270)
 tumor_img = pygame.image.load(
-    "tumor_3.png")
+    "Media/Tumor-Image.png")
 rbc_image = pygame.image.load(
-    "rbc_3.png")
-
+    "Media/RedBloodCell-Image.png")
+    
 
 class Bot():
     def __init__(self, id):
