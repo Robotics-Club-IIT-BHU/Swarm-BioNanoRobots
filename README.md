@@ -20,7 +20,7 @@ The Nano-bots' goal is to approach and eliminate all the Tumor cells while avoid
 The bots are rewarded globally depending on how distant they are from the Tumor group and rewarded individually based on collisions with RBCs or other Nano-bots and eliminating the Tumor cells.
 
 <p align="center">
- <img src="./rsc/methodology.png">
+ <img  width="800" height="530" src="./rsc/methodology.png">
 </p>
 
 The number of Nano-bots, RBC's, Tumor cells, and tumor groups are modifiable
