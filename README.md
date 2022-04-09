@@ -7,7 +7,7 @@ The challenges in cancer therapies are that they induce side effects by travelin
 Swarm robotics offers the potential to advance personalized precision medicine and cancer therapy.
 
 <p align="center">
- <img  width="450" height="300" src="\rsc\abstract.png">
+ <img  width="450" height="300" src="./rsc/abstract.png">
 </p>
 
 Our study attempts to provide a customizable gym environment with collisions and physics that can be used to test and benchmark multi-agent path-planning algorithms for targeting cancer cells.
