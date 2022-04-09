@@ -20,7 +20,7 @@ The Nano-bots' goal is to approach and eliminate all the Tumor cells while avoid
 The bots are rewarded globally depending on how distant they are from the Tumor group and rewarded individually based on collisions with RBCs or other Nano-bots and eliminating the Tumor cells.
 
 <p align="center">
- <img  width="450" height="300" src="./rsc/methodology.png">
+ <img  width="500" height="330" src="./rsc/methodology.png">
 </p>
 
 The number of Nano-bots, RBC's, Tumor cells, and tumor groups are modifiable
@@ -32,7 +32,7 @@ Observation space for each bot:[ bot_position , bot_velocity, relative_position_
 The Gym environment is rendered using PyGame.
 
 <p align="center">
- <img  width="450" height="300" src="./rsc/methodology2.png">
+ <img  width="400" height="300" src="./rsc/methodology2.png">
 </p>
 
 ## Conclusion
