@@ -31,10 +31,6 @@ Observation space for each bot:[ bot_position , bot_velocity, relative_position_
 
 The Gym environment is rendered using PyGame.
 
-<p align="center">
- <img  width="400" height="300" src="./rsc/methodology2.png">
-</p>
-
 ## Conclusion
 
 This environment is not only limited to the research of cancer treatment. Due to its flexibility, it can be used for testing multi-agent path-planning algorithms where the RBCs can be treated as dynamic obstacles and the tumors as dynamic landmarks. These can be very easily changed to suit the problem at hand.
