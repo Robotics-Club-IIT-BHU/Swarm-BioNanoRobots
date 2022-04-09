@@ -37,7 +37,7 @@ This environment is not only limited to the research of cancer treatment. Due to
 
 <p align="center">
  <img src="./rsc/conclusion1.png">
-    &ensp
+    &ensp;
  <img src="./rsc/conclusion2.png">
 </p>
 
