@@ -1,4 +1,4 @@
-# Gym Environment for Swarm Bots 
+# Gym Environment for Swarm Bots
 
 ## Abstract
 
@@ -6,8 +6,12 @@ The challenges in cancer therapies are that they induce side effects by travelin
 
 Swarm robotics offers the potential to advance personalized precision medicine and cancer therapy.
 
-![abs](./rsc/abstract.png)
+<p align="center">
+ <img  width="450" height="300" src="\rsc\abstract.png">
+</p>
+
 Our study attempts to provide a customizable gym environment with collisions and physics that can be used to test and benchmark multi-agent path-planning algorithms for targeting cancer cells.
+
 ## Methodology
 
 We created a multi-agent gym environment comprised of three entities: Nano-bots, RBCs, and Tumor cells.
@@ -27,20 +31,18 @@ The Gym environment is rendered using PyGame.
 
 ![metd](./rsc/methodology2.png)
 
-
 ## Conclusion
 
 This environment is not only limited to the research of cancer treatment. Due to its flexibility, it can be used for testing multi-agent path-planning algorithms where the RBCs can be treated as dynamic obstacles and the tumors as dynamic landmarks. These can be very easily changed to suit the problem at hand.
 
 ![conc](./rsc/conclusion1.png)
 
-
 ## References
 
-[1] Simple Spread:  MPE in which the agents must learn to cover all the landmarks while avoiding collisions.
+[1] Simple Spread: MPE in which the agents must learn to cover all the landmarks while avoiding collisions.
 
 [2] OpenAI Gym
 
 [3] Multi-agent system simulation of nano-robotic drug delivery in tumors of body tissues
 
-[4] Assessment of Applying Path Planning Technique to Nanorobots in a Human Blood Environment 
+[4] Assessment of Applying Path Planning Technique to Nanorobots in a Human Blood Environment
