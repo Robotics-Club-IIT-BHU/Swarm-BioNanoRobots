@@ -24,13 +24,11 @@ STEM = [[WIDTH - 30, 30], [WIDTH-30, HEIGHT-30]] #stem position
 e = 0.5 #coeff of restitution
 
 
-# images
+# Images
 Bot_img = pygame.image.load('Media/Nano-bot-image.png')
 Bot_img_copy = pygame.transform.rotate(Bot_img, 270)
-tumor_img = pygame.image.load(
-    "Media/Tumor-Image.png")
-rbc_image = pygame.image.load(
-    "Media/RedBloodCell-Image.png")
+tumor_img = pygame.image.load("Media/Tumor-Image.png")
+rbc_image = pygame.image.load("Media/RedBloodCell-Image.png")
     
 
 class Bot():
@@ -103,8 +101,6 @@ class Bot():
             else:
                 self.angle = 270
 
-        # print(self.angle)
-
     def reset(self):
         self.ang_acc = 0
         self.vel = [0, 0]
@@ -158,9 +154,6 @@ class tumor():
             self.stem_vel[0] *= -1
         if self.stem[1] < 0 or self.stem[1] > HEIGHT-5:
             self.stem_vel[1] *= -1
-        #self.r += ((math.sqrt(math.pow((STEM[0] -self.pos[0]), 2)+math.pow((STEM[1] - self.pos[1]), 2)))) / (TUMOR_RADIUS)
-        # if self.r > 7:
-        #self.r = 7
 
 
 class CustomEnv(gym.Env):
@@ -200,7 +193,6 @@ class CustomEnv(gym.Env):
 
     # STEP
     def step(self, action):
-        # np.array(pygame.surfarray.array3d(self.window))
 
         self.reward = -50
         self.done = False
